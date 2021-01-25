@@ -8,29 +8,31 @@ const userSchema = mongoose.Schema({
   email: {
     type: String,
     trim: true, //스페이스바를 없애주는 역할을 한다
-    unique:1 //중복불가
+    unique: 1, //중복불가
   },
-  password:{
-      type:String,
-      minlength:5
+  password: {
+    type: String,
+    minlength: 5,
   },
-  lastname{
-    type:String,
-    maxlength:50
+  lastname: {
+    type: String,
+    maxlength: 50,
   },
-  role:{ //권한설정
-      type:Number
-      default: 0 
+  role: {
+    //권한설정
+    type: Number,
+    default: 0,
   },
   image: String,
-  token:{
-      type:String
+  token: {
+    type: String,
   },
-  tokenExp:{//토큰 유효기간
-    type:Number
-  }
+  tokenExp: {
+    //토큰 유효기간
+    type: Number,
+  },
 });
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model("User", userSchema);
 
-module.exports = {User} // 파일 내보내기
+module.exports = { User }; // 파일 내보내기
