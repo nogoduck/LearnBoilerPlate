@@ -3,8 +3,12 @@ const app = express();
 const port = 5000;
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-
+const { auth } = require("./middleware/auth");
 const { User } = require("./models/User");
+
+//import 해올때 "{}"의 유무는 가져올 모듈의 기본값이 정해져 있으면 없이 사용해도 되고 변수명도 마음대로 받아올 수 있다 그렇지않으면 사용해야한다
+//ex) module.exports.default = ab
+// => const a = require('ab');
 
 //application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -50,6 +54,7 @@ app.post("/register", (req, res) => {
   });
 });
 
+//문제 : /api/users/login 경로로 하면 postman의 전달된 값을 받을 수 없다 [해결안됌]
 app.post("/login", (req, res) => {
   //요청된 이메일을 데이터베이스에서 찾는다
   //findOne : mongdb에서 제공하는 검색 매소드
@@ -80,6 +85,40 @@ app.post("/login", (req, res) => {
           .status(200)
           .json({ loginSuccess: true, userId: user._id });
       });
+    });
+  });
+});
+
+//auth는 미들웨어 역할을 한다
+// app.get([a], [b], [c])
+//[a]엔드포인트에서 요청(리퀘스트)를 받고
+//[c]의 콜백 함수 전에 중간에서 무언가를 해주는 역할을
+//하기 때문에 미들웨어라 불린다
+app.get("/auth", auth, (req, res) => {
+  //여기까지 왔다는것은 미들웨어를 통과했다는 뜻이며
+  //미들웨어를 통과하지 못할 시 함수를 탈출하게 되어있다
+  //Authentication 이 True 라는 말도 된다
+
+  res.status(200).json({
+    _id: req.user._id, //auth.js에서 리퀘스트 했기때문에 이렇게 사용가능
+
+    //role 1 어드민 / role2 다른 직책 => 정책이 맘대로 변겨이 가능함
+    //현재는 role 0 : 일반유저, 그게 아니라면 관리자
+    isAdmin: req.user.role === 0 ? false : true,
+    isAuth: true,
+    email: req.user.email,
+    name: req.user.name,
+    lastname: req.user.lastname,
+    role: req.user.role,
+    image: req.user.image,
+  });
+});
+
+app.get("/logout", auth, (req, res) => {
+  User.findOneAndUpdate({ _id: req.user._id }, { token: "" }, (err, user) => {
+    if (err) return res.json({ success: false, err });
+    return res.status(200).send({
+      success: true,
     });
   });
 });
