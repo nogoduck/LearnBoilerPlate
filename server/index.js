@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const port = 5000;
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const { auth } = require("./middleware/auth");
@@ -33,6 +32,10 @@ mongoose
 
 app.get("/", (req, res) => {
   res.send("5000포트 테스트입니다! No SQL");
+});
+
+app.get("/api/hello", (req, res) => {
+  res.send("server/index.js에서의 응답입니다: 안녕하세요");
 });
 
 app.post("/register", (req, res) => {
@@ -122,6 +125,8 @@ app.get("/logout", auth, (req, res) => {
     });
   });
 });
+
+const port = 5000;
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
