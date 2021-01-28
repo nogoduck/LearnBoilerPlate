@@ -3,7 +3,7 @@ import Axios from "axios";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../../_actions/user_action";
 
-function LoginPage() {
+function LoginPage(props) {
   const dispatch = useDispatch();
 
   const [Email, setEmail] = useState(""); // 처음의 값 정의
@@ -28,7 +28,13 @@ function LoginPage() {
       password: Password,
     };
 
-    dispatch(loginUser(body));
+    dispatch(loginUser(body)).then((response) => {
+      if (response.payload.loginSuccess) {
+        props.history.push("/");
+      } else {
+        alert("ERROR");
+      }
+    });
 
     //리엑트를 사용할땐 아래와 같이 body를 보내주면 되지만 리덕스를 사용하기 위해선 위와 같이 dispatch를 사용하여 보내주어야한다
     // Axios.post("/api/user/login", body).then((response) => {}); //서버로 보냄
