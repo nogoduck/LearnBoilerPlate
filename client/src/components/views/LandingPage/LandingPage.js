@@ -1,10 +1,22 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 
-function LandingPage() {
+function LandingPage(props) {
   useEffect(() => {
     axios.get("/api/hello").then((response) => console.log(response.data));
   }, []);
+
+  const onClickHandler = () => {
+    axios.get("/api/users/logout").then((response) => {
+      // console.log(response.data); //로그아웃 성공시 콘솔에 출력
+      if (response.data.success) {
+        props.history.push("/login");
+      } else {
+        alert("Failed to Logout ...");
+      }
+    });
+  };
+
   return (
     <div
       style={{
@@ -15,7 +27,9 @@ function LandingPage() {
         height: "100vh",
       }}
     >
-      <h2>시작 페이지</h2>
+      <h2>Start Page</h2>
+      <br></br>
+      <button onClick={onClickHandler}>LOGOUT</button>
     </div>
   );
 }
