@@ -15,8 +15,8 @@ function LoginPage() {
     event.preventDefault(); //  preventDefault 이벤트가 없으면 이 함수가 실행될때마다 페이지가 새로고침 된다 이를 방지하는 함수이다
 
     // 서버에 값을 보내기 전에 state에 저장된 값을 확인하고자 찍어봄
-    // console.log("Email", Email);
-    // console.log("Password", Password);
+    console.log("Email", Email);
+    console.log("Password", Password);
   };
 
   return (
