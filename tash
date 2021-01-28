@@ -1,0 +1,65 @@
+[33mcommit 8cc14682ca3da531dce4d9092c1d54ba49fcc9a3[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: ad <nogo22@naver.com>
+Date:   Thu Jan 28 12:06:21 2021 +0900
+
+    LoginPage part1/2
+
+[33mcommit 6159304dd0709760ad2bf409df488bc438fc48b2[m
+Author: ad <nogo22@naver.com>
+Date:   Thu Jan 28 05:18:42 2021 +0900
+
+    connect Reducer
+
+[33mcommit de2cef9b9fad31e057bf0ee1a44ec58f4b17010e[m
+Author: ad <nogo22@naver.com>
+Date:   Thu Jan 28 04:12:09 2021 +0900
+
+    back + front TurnOn together
+
+[33mcommit e090852d29a6829c3e779b6d98a84af3648944bf[m
+Author: ad <nogo22@naver.com>
+Date:   Thu Jan 28 04:01:14 2021 +0900
+
+    back - front > proxy connect
+
+[33mcommit 5ae35e86b68679d7b7e2daf1d9cdaec8a117c8e4[m
+Author: ad <nogo22@naver.com>
+Date:   Thu Jan 28 02:23:54 2021 +0900
+
+    page connect
+
+[33mcommit 3bf3377c80675aab4435a1b1fb3f2e8dee1bda4f[m
+Author: ad <nogo22@naver.com>
+Date:   Wed Jan 27 06:02:50 2021 +0900
+
+    Structure Configuration
+
+[33mcommit c96c576f40c32e36fb22341e921845d395334383[m
+Author: ad <nogo22@naver.com>
+Date:   Wed Jan 27 05:18:15 2021 +0900
+
+    add react and client, server separation
+
+[33mcommit 2d818a208ebf869b50d02325625aced0255ef656[m
+Author: ad <nogo22@naver.com>
+Date:   Wed Jan 27 04:20:00 2021 +0900
+
+    func logout
+
+[33mcommit cb3a237ca8838749d081d2fad50b1a83129a700e[m
+Author: ad <nogo22@naver.com>
+Date:   Tue Jan 26 05:02:38 2021 +0900
+
+    func login and password  encrytion
+
+[33mcommit bd764d8600f32e853a580dd56029a1da33e47855[m
+Author: ad <nogo22@naver.com>
+Date:   Tue Jan 26 02:16:56 2021 +0900
+
+    connect mongodb
+
+[33mcommit 4a25ffbcc8edb76f9ab7925311ac1fcfb9224240[m
+Author: ad <nogo22@naver.com>
+Date:   Mon Jan 25 04:58:09 2021 +0900
+
+    start

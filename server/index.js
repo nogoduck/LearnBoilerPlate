@@ -38,7 +38,7 @@ app.get("/api/hello", (req, res) => {
   res.send("server/index.js에서의 응답입니다: 안녕하세요");
 });
 
-app.post("/register", (req, res) => {
+app.post("/api/users/register", (req, res) => {
   //Client에서 회원가입 때 입력한 정보를 가져오면
   //정보들을 db에 넣어준다
 
@@ -58,7 +58,7 @@ app.post("/register", (req, res) => {
 });
 
 //문제 : /api/users/login 경로로 하면 postman의 전달된 값을 받을 수 없다 [해결안됌]
-app.post("/login", (req, res) => {
+app.post("/api/users/login", (req, res) => {
   //요청된 이메일을 데이터베이스에서 찾는다
   //findOne : mongdb에서 제공하는 검색 매소드
   User.findOne({ email: req.body.email }, (err, user) => {
@@ -117,7 +117,7 @@ app.get("/auth", auth, (req, res) => {
   });
 });
 
-app.get("/logout", auth, (req, res) => {
+app.get("/api/users/logout", auth, (req, res) => {
   User.findOneAndUpdate({ _id: req.user._id }, { token: "" }, (err, user) => {
     if (err) return res.json({ success: false, err });
     return res.status(200).send({
