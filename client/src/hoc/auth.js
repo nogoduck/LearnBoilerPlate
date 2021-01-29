@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React, { useEffect } from "react";
-import Axios from "axios";
+// import Axios from "axios";
 import { useDispatch } from "react-redux"; //리액트 훅
 import { auth } from "../_actions/user_action";
 
@@ -15,7 +15,8 @@ export default function (SpecificComponent, option, adminRoute = null) {
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(auth()).then((response) => {
-        console.log(response); // 요청한 유저정보가 잘 왔는지 확인
+        // 요청한 유저정보가 잘 왔는지 확인
+        // console.log(response);
 
         //로그인 하지 않은 상태
         if (!response.payload.isAuth) {
@@ -37,7 +38,7 @@ export default function (SpecificComponent, option, adminRoute = null) {
 
       // 리덕스를 사용하지 않으면 아래의 코드로 로그인정보를 간단히 넘길수 있다
       // Axios.get('/api/users/auth')
-    }, []);
+    }, [dispatch, props.history]);
 
     return <SpecificComponent />;
   }
