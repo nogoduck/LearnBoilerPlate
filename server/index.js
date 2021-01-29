@@ -97,7 +97,7 @@ app.post("/api/users/login", (req, res) => {
 //[a]엔드포인트에서 요청(리퀘스트)를 받고
 //[c]의 콜백 함수 전에 중간에서 무언가를 해주는 역할을
 //하기 때문에 미들웨어라 불린다
-app.get("/auth", auth, (req, res) => {
+app.get("/api/users/auth", auth, (req, res) => {
   //여기까지 왔다는것은 미들웨어를 통과했다는 뜻이며
   //미들웨어를 통과하지 못할 시 함수를 탈출하게 되어있다
   //Authentication 이 True 라는 말도 된다
